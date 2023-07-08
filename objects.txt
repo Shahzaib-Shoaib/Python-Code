@@ -1,0 +1,42 @@
+Object # 01: Ask user to enter first name and display the output message
+Object # 02: Ask user to enter two numbers. Add them together and display the answer as "The total is"
+Object # 03: Ask user to enter three numbers. Add together the first two numbers and then multiply this total by the third. Display the anwer as "The answer is:"
+Object # 04: Write a program that will ask for number of days and then will show how many hours, minutes and seconds are in that number of days
+Object # 05: Ask the user to enter a number between 10 and 20 (inclusive). If they enter a number within the range display the message "Thank you" , otherwise display message "Incorrect answer".
+Object # 06: Ask the user's age, if they are 18 or over , display the message "You can vote". If they are aged 17 , display the message "You can learn to drive". If they are aged 16, display the message "You can buy a lottery ticket". If they are under 16 , display the message "You can go Trick or Treating".
+Object # 07: Ask the user to enter 1,2 or 3. If they enter 1, display the message "Thank You". If they enter 2, display "Well done". If they enter 3 display "Correct". If they enter anything else, display "Error Message"
+Object # 08: Develop a student grading system according to the following instructions:
+1. Take input of five subjects obtained marks
+2. Sum up the marks
+3. Grade the marks as below:
+(i) : If obtained marks are => 90 and < 101 Grade A+
+(ii) : If obtained marks are => 80 and < 90 Grade A
+(iii) : If obtained marks are => 70 and < 80 Grade B
+Object # 09: Ask the user to enter a number between 1 and 12 and then display the times table for that number.
+Object # 10: Ask for a number below 50 and then count down from 50 to that number, making sure you show the number they entered in the output.
+Object # 11: Set a variable called total to 0. Ask the user to enter five numbers and after each input ask them if they want that number included, if they do, then add the number to the total , if they do not want it included , do not add it to the total. After they have entered all five numbers, dispay the total.
+Object # 12: Ask how many people the user want to invite to a party. If they enter a number below 10, ask for the names and after each name, display "[name] has been invited". If they enter a number which is 10 or higher , display the message "Too many people"
+Object # 13: Ask the user to enter a number and then enter another number. Add these two numbers together and then ask if they want to add anther number. If they enter "y" ask them to enter another number and keep adding numbers until they do not answer "y". Once the loop has stopped, display the output.
+Object # 14: Create a variable callled compnum and set the value to 50. Ask the user to enter a number. While their guess is not the same as the compnum value , tell them if their guess is too low or too high and ask them to have another guess. If they enter the same value as the compnum. Display the messsage "Welldone".
+Object # 15: Ask the user to enter a number between 10 and 20. If they enter a value under 10, display the message "Too Low" and ask them to try again. If they enter a value above 20, display the message "Too High" and ask them to try again. Keep asking until they enter a value that is between 10 and 20, then display the message "Thank You".
+Object # 16: Find out the factorial of a given number using while loop.
+Object # 17: Using the song "3 green bottles", display the lines "There are [num] green bottles hanging on the wall". Then ask the question "How many bottles are hanging on the wall ?". If the user answers correctly , display the message "There will be [num] green bottles hanging on the wall". If they answer incorrectly , display the message "No try again" until they get it right. When the number of green bottles gets down to (Zero), display the message "There are no more green bottles hanging on the wall".
+Object # 18: Write a program which stores country name, population and area in 1 list and then store this list multiple times until the user enters “” in the country name. Calculate average density and print the name of the country whose population density is low.
+Object # 19: Reverse a list in python. List can be assumed.
+Object # 20: Concatenate two lists in python. List can be assumed.
+Object # 21: Turn every item of a list into its square in python. List can be assumed.
+Object # 22: Remove the empty strings from the list of strings in python. List can be assumed.
+Object # 23: Remove all occurrences of the same item from the list of strings in python. List is  [5, 20, 15, 20, 25, 50, 20]
+Object # 24: Develop a function that takes a list as a parameter and returns a list with unique values from the provided list: [1, 1, 2, 2, 2, 2, 3, 4, 4, 4, 5, 6, 6, 7]
+Object # 25: Write a program that takes input from the user and find that number from the list along with its index number
+Object # 26: 
+a: Write a program to print smallest number in a given list and its location (index)
+b: Extend the program to interchange (swap) the first number and the location at which smallest value is found
+c: Write a python program to sort the given list of numbers by using selection sort algorithm
+Object # 27: Write a program which takes input of Student Name, Seat Number and three marks and add data to another file.
+Object # 28: Create a new file. Ask the user  to enter 1, 2 or 3, if they select anything other than 1, 2 or 3, it should display the error message. If they select 1, ask the user to enter a school subject and save it to a new file called “Subject.txt”. It should overwrite any existing file with a new file. If they select 2, display the contents of the “Subject.txt” file. If they select 3, ask the user to enter a new subject and save it to the file and display the entire contents of the file.
+Object # 29: 
+a: Using the Books.csv file, ask the user how many records they want to add to the list and then allow them to add that many.
+b: You must import the csv library by using import csv.
+c: After all data has been added, ask for an author and display all the books in the list by that author. If there are no books written by that author in the list, display a message.
+
