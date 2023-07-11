@@ -21,7 +21,7 @@ for r in range(b):
     recordList.append(e)
     data.append(recordList)
 
-fpath = "C:\\Users\\means\\Desktop\\Shahzaib University Assignments\\CSSE 305 Lab\\Code\\Books.csv"
+fpath = "C:\\Users\\means\\Desktop\\Shahzaib University Assignments\\CSSE 305 Lab\\Python-Code\\Books.csv"
 
 with open("Books.csv", "w", encoding="UTF8", newline="") as f:
     writer = csv.writer(f)

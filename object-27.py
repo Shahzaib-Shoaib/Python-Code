@@ -1,5 +1,5 @@
 # Write a program which takes input of Student Name, Seat Number and three marks and add data to another file.
-fpath = "C:\\Users\\means\\Desktop\\Shahzaib University Assignments\\CSSE 305 Lab\\Code\\data.txt"
+fpath = "C:\\Users\\means\\Desktop\\Shahzaib University Assignments\\CSSE 305 Lab\\Python-Code\\data.txt"
 op = open(fpath, "w")
 
 while True:
