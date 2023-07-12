@@ -25,8 +25,12 @@ data = pd.read_csv(fpath)
 df = pd.DataFrame({'Student Names': ['Jenny', 'Singh', 'Charles', 'Richard', 'Veena'],
                    'Category': ['Online', 'Offline', 'Offline', 'Offline', 'Online'],
                    'Gender': ['Female', 'Male', 'Male', 'Male', 'Female'],
-                  'Courses': ['Java', 'Spark', 'PySpark', 'Hadoop', 'C'],
+                   'Courses': ['Java', 'Spark', 'PySpark', 'Hadoop', 'C'],
                    'Fee': [15000, 17000, 27000, 29000, 12000],
                    'Discount': [1100, 800, 1000, 1600, 600]})
-p_table = pd.pivot_table(df, index=['Gender'])
+
+p_table = pd.pivot_table(data, index=['symbol'], values=[
+                         'volume'], aggfunc='mean')
 print(p_table)
+
+print(df)
