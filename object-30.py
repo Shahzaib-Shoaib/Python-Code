@@ -16,6 +16,6 @@ print("This is the changed data after a new column 'Population Density' is added
 print(df, "\n")
 p_table = pd.pivot_table(df, index=['Continent'], values=[
                          'Area', "Population", 'GDP'], aggfunc='mean')
-print("Data sorted according to the Continents, all values in the columns are mean values  \n")
+print("Data sorted according to the Continents, all values in these columns are mean values  \n")
 
 print(p_table)
