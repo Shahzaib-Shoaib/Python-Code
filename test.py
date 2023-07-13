@@ -9,11 +9,14 @@ data = {
 }
 
 df = pd.DataFrame(data)
-print(df,"\n")
+print("This is raw data \n")
+print(df, "\n")
 df['Population Density'] = df['Population'] / df['Area']
-df['GDP Per Capita'] = df['GDP'] / df['Population']
-print(df,"\n")
+print("This is the changed data after a new column 'Population Density' is added \n")
+print(df, "\n")
 
 p_table = pd.pivot_table(df, index=['Continent'], values=[
-                         'Area', "Population", 'GDP', 'Population Density', 'GDP Per Capita'], aggfunc="sum")
+                         'Area', "Population", 'GDP'], aggfunc='mean')
+print("Data sorted according to the Continents, all values in these columns are mean values  \n")
+
 print(p_table)
