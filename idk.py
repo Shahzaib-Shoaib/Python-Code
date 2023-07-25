@@ -30,7 +30,7 @@
 #         else:
 #             total = total + b
 
-##################################################################3
+# 3
 
 # a = 1
 # sum = 0
@@ -55,8 +55,7 @@
 #             print("Ignore")
 
 
-
-##################################################################3
+# 3
 
 
 # n = int(input("Enter the value of n: "))
@@ -72,3 +71,37 @@
 
 # print("Count of positive numbers :", pc)
 # print("Count of negative numbers :", nc)
+
+############################################################################################
+
+# data = [9, 25, 12, 19, 15]
+# n = 5
+
+# for i in range(0, n-2):
+#     temp = data[i]
+#     index = i - 1
+#     while (data[index] > temp) and (index >= 0):
+#         data[index+1] = data[index]
+#         index = index-1
+#     data[index+1] = temp
+
+# print(temp)
+# print(data)
+
+
+# numhash = hash(("dfs","sdgf","dsgfg"))
+# print(numhash)
+
+
+def f(x):
+    return x*x-x
+
+
+sp = -2.3
+while True:
+    sp = sp + 0.1
+    fun = f(sp)
+    print(fun, "if value of x is", sp)
+
+    if sp >= 3.5:
+        break

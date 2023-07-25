@@ -5,7 +5,7 @@ def forward_difference(f, x, h):
     return (f(x + h) - f(x)) / h
 
 # Define the point at which to compute the derivative
-x = 3
+x = 2
 
 # Define the step size (h)
 h = 0.0001
@@ -15,3 +15,4 @@ derivative = forward_difference(f, x, h)
 
 # Print the derivative
 print(derivative)
+    

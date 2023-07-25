@@ -1,0 +1,2 @@
+S.No	Seat Number	Name	Father's Name	Theory Marks	Lab Marks	Total Marks	Marks In Words	Alphabetic Grade
+1	46545	346546	56356	465	563564652	4365	463	46	46	4646

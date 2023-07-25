@@ -12,4 +12,5 @@ while b == 0:
             print("There are no more green bottles left")
             break
         else:
+            print("No, Try again")
             a = a - 1
