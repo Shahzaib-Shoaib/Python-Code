@@ -93,15 +93,21 @@
 # print(numhash)
 
 
-def f(x):
-    return x*x-x
+# def f(x):
+#     return x*x-x
 
 
-sp = -2.3
-while True:
-    sp = sp + 0.1
-    fun = f(sp)
-    print(fun, "if value of x is", sp)
+# sp = -2.3
+# while True:
+#     sp = sp + 0.1
+#     fun = f(sp)
+#     print(fun, "if value of x is", sp)
 
-    if sp >= 3.5:
-        break
+#     if sp >= 3.5:
+#         break
+# Example dictionary
+my_dict = {"name": "John", "age": 30, "city": "New York"}
+
+# Getting all the keys using the keys() method
+keys_list = list(my_dict.keys())  # Convert the keys view to a list (optional)
+print(keys_list)
