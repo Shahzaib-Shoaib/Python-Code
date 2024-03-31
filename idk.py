@@ -106,8 +106,94 @@
 #     if sp >= 3.5:
 #         break
 # Example dictionary
-my_dict = {"name": "John", "age": 30, "city": "New York"}
+# from typing import List
+# my_dict = {"name": "John", "age": 30, "city": "New York"}
 
-# Getting all the keys using the keys() method
-keys_list = list(my_dict.keys())  # Convert the keys view to a list (optional)
-print(keys_list)
+# # Getting all the keys using the keys() method
+# keys_list = list(my_dict.keys())  # Convert the keys view to a list (optional)
+# print(keys_list)
+
+
+# sample_dict = {1: 'Coffee', 2: 'Tea', 3: 'Juice'}
+# for x in sample_dict:
+#     print(x)
+
+
+# class Solution:
+#     def twoSum(self, nums: List[int], target: int) -> List[int]:
+#         sumNumbers = []
+#         total = 0
+#         for i in range(len(nums)):
+#             for x in range(len(nums)):
+#                 if (i == x):
+#                     continue
+#                 else:
+#                     total = nums[i] + nums[x]
+#                     if (target == total):
+#                         if (len(sumNumbers) < 1):
+#                             sumNumbers.append(i)
+#                             sumNumbers.append(x)
+
+#         return sumNumbers
+
+
+# solution_instance = Solution()
+
+# print(solution_instance.twoSum([3, 2, 4], 6)
+#       )
+
+
+# class Solution:
+#     def firstUniqChar(self, s: str) -> int:
+#         list = []
+#         if (len(s) == 1):
+#             answer = 0
+#             return answer
+
+#         for i in range(len(s)):
+#             for x in range(len(s)):
+#                 if (i == x):
+#                     continue
+#                 else:
+#                     if (s[i] == s[x]):
+#                         pass
+
+#                     else:
+#                         list.append(i)
+#         for v in range(len(list)):
+#             if (list.count(list[v])+1 == len(s)):
+#                 answer = list[v]
+#                 return answer
+
+#         return -1
+
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        indices = []
+        
+        for i in range(len(s)):
+            is_duplicate = False
+            for x in range(len(s)):
+                if i != x and s[i] == s[x]:
+                    is_duplicate = True
+                    break
+            
+            if not is_duplicate:
+                indices.append(i)
+        print(indices)
+
+        for v in range(len(indices)):
+            if s.count(s[indices[v]]) == 1:
+                return indices[v]
+
+        return -1  # No unique character found
+
+# Creating an instance of the class
+sol = Solution()
+
+# Calling the method on the instance
+result = sol.firstUniqChar("leetcode")
+print(result)
+
+
+
