@@ -2,8 +2,8 @@ import requests
 import re
 from bs4 import BeautifulSoup
 import pandas as pd
-url = 'https://www.rugs-direct.com/Details/AmerRugs-Legacy-Barton/145273'
-response = requests.get(url)
+main_url = 'https://www.rugs-direct.com/Details/AmerRugs-Abstract-Hammond/142573/229522'
+response = requests.get(main_url)
 html_content = response.text
 soup = BeautifulSoup(html_content, features="html.parser")
 pattern = re.compile(
@@ -12,6 +12,32 @@ color_pattern = re.compile(r'Color:\s*(.*)')
 
 product_data_divs = soup.find('div', class_='right-panel')
 
+# -------------------------------------------------------------#
+
+href_list = []
+
+try:
+    product_color_variants = product_data_divs.find_all(
+        'a', {'data-slide-id': True})
+    for a_tag in product_color_variants:
+        href = a_tag.get('href')
+        href_list.append("https://www.rugs-direct.com"+href)
+
+    print(href_list)
+
+
+except AttributeError:
+    product_color_variants = None
+
+
+# -------------------------------------------------------------#
+
+for i in range(len(href_list)):
+    url = href_list[i]
+
+
+# -------------------------------------------------------------#
+
 product_list = []
 
 product_name = product_data_divs.find(
@@ -19,10 +45,12 @@ product_name = product_data_divs.find(
 product_vendor = product_data_divs.find(
     'a', class_='rd-primary-link').get_text(strip=True)
 product_color = product_data_divs.find(
-    'p', class_='size-color-info mb-p5').get_text()
+    'p', class_='size-color-info').get_text()
+
 match = color_pattern.search(product_color)
 if match:
     color = match.group(1)
+
 
 product_info_divs = soup.find('div', id='product-overview-container')
 
@@ -39,7 +67,6 @@ for feature in features_divs:
         'div', class_='rug-features-right').get_text(strip=True)
     transformed_metafield_key = key + " " + f"(product.metafields.custom.{
         key.replace(' ', '_').lower()})"
-    print(transformed_metafield_key)
 
     features_dict[transformed_metafield_key] = value
 
@@ -122,17 +149,11 @@ for product_variant_div in product_variant_divs:
         count = count + 1
         product_list.append(product_variant_info)
 
-    # product_image_info = {
-    #     'Image Src': url,
-    #     'Image Position': image_count
-    # }
-    # product_list.append(product_image_info)
-
 
 df = pd.DataFrame(product_list)
 
-df.to_csv('product_details.csv', index=False)
+# df.to_csv('product_details.csv', index=False)
 
-print(df)
+# print(df)
 
 # print("CSV file created successfully")
