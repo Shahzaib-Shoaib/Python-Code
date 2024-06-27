@@ -64,14 +64,42 @@ for url in urls:
     except AttributeError:
         color = None
 
-    # Initialize the product info dictionary
+    # Extracting product description
+    product_info_divs = soup.find('div', id='product-overview-container')
+
+    product_description = product_info_divs.find(
+        'div', class_='product-overview-data')
+
+    # Extracting product metafields
+    product_metafields = product_info_divs.find(
+        'div', class_='rug-features-item')
+    features_divs = product_metafields.find_all('div', class_='rug-features')
+
+    features_dict = {}
+    for feature in features_divs:
+        key = feature.find(
+            'div', class_='rug-features-left').get_text(strip=True)
+        value = feature.find(
+            'div', class_='rug-features-right').get_text(strip=True)
+        transformed_metafield_key = key + " " + f"(product.metafields.custom.{
+            key.replace(' ', '_').lower()})"
+
+        features_dict[transformed_metafield_key] = value
+
+    # Extracting product images
+    product_image_div = soup.find('div', class_='MagicSlideshow')
+    magic_zoom_links = product_image_div.find_all('a', class_='MagicZoom')
+    image_urls = [link['href'] for link in magic_zoom_links]
 
     # Extracting variant information
     product_variant_divs = soup.find_all('div', class_='p-tile product_tile')
     count = 0
 
     for product_variant_div in product_variant_divs:
-        count += 1
+        if count < len(image_urls):
+            url = image_urls[count]
+            count += 1
+
         try:
             product_variant_size = product_variant_div.find(
                 'div', class_='product_size')
@@ -94,6 +122,7 @@ for url in urls:
 
         product_info = {
             'Title': product_name,
+            'Body (HTML)': product_description,
             'Vendor': product_vendor,
             'Option1 Name': 'Color',
             'Option1 Value': color,
@@ -101,9 +130,11 @@ for url in urls:
             'Option2 Value': size,
             'Variant Compare At Price': sale_price,
             'Variant Price': original_price,
-            # 'Variant %d Discount Percent' % (count): discount_percent,
-
+            'Image Src': url,
+            'Variant Image': image_urls[1],
+            'Variant Inventory Qty': 1,
         }
+        product_info.update(features_dict)
 
         # Converting the product info dictionary to a DataFrame
         new_df = pd.DataFrame([product_info])
@@ -111,8 +142,33 @@ for url in urls:
         # Append the new data to the existing DataFrame
         existing_df = pd.concat([existing_df, new_df], ignore_index=True)
 
+        if count != len(image_urls):
+            url = image_urls[count]
+
+            product_info = {
+                'Title': product_name,
+                'Body (HTML)': None,
+                'Vendor': None,
+                'Option1 Name': None,
+                'Option1 Value': None,
+                'Option2 Name': None,
+                'Option2 Value': None,
+                'Variant Compare At Price': None,
+                'Variant Price': None,
+                'Image Src': url,
+                'Variant Image': None,
+                'Variant Inventory Qty': None,
+            }
+            count += 1
+        # Converting the product info dictionary to a DataFrame
+        new_df = pd.DataFrame([product_info])
+
+        # Append the new data to the existing DataFrame
+        existing_df = pd.concat([existing_df, new_df], ignore_index=True)
+
+
 # Save the updated DataFrame back to the CSV file
 existing_df.to_csv(csv_file, index=False)
 
 print(existing_df)
-print("CSV file updated successfully")
+print("CSV file added successfully")
