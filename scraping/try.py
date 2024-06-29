@@ -6,9 +6,10 @@ import os
 
 
 product_urls = [
-    # "https://www.rugs-direct.com/Details/CalvinKleinHome-Linear-LNR01/147638/236892",
-    # "https://www.rugs-direct.com/Details/CalvinKleinHome-Volcanic-VLC01/147663",
-    "https://www.rugs-direct.com/Details/AmerRugs-Fairmont-FAI2/139167"
+    "https://www.rugs-direct.com/Details/CalvinKleinHome-Linear-LNR01/147638/236892",
+    "https://www.rugs-direct.com/Details/CalvinKleinHome-Volcanic-VLC01/147663",
+    "https://www.rugs-direct.com/Details/AmerRugs-Fairmont-FAI2/139167",
+    "https://www.rugs-direct.com/Details/AmerRugs-Cambridge-Cambria/132642"
 ]
 
 
@@ -261,7 +262,7 @@ for index, product_url in enumerate(product_urls):
     soup = BeautifulSoup(html_content, features="html.parser")
 
     product_data_divs = soup.find('div', class_='right-panel')
-    product_variant_divs = soup.find_all('div', class_='p-tile product_tile')
+    product_variant_divs = soup.find_all('div', class_='p-tile')
     product_variant_divs_count = (len(product_variant_divs))
 
     href_list = []

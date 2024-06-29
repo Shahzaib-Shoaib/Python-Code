@@ -351,7 +351,7 @@ for index, product_url in enumerate(product_urls):
     soup = BeautifulSoup(html_content, features="html.parser")
 
     product_data_divs = soup.find('div', class_='right-panel')
-    product_variant_divs = soup.find_all('div', class_='p-tile product_tile')
+    product_variant_divs = soup.find_all('div', class_='p-tile')
     product_variant_divs_count = (len(product_variant_divs))
 
     href_list = []
