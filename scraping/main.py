@@ -6,12 +6,8 @@ import os
 
 
 product_urls = [
-
     "https://www.rugs-direct.com/Details/CalvinKleinHome-Linear-LNR01/147638/236892",
-
-    "https://www.rugs-direct.com/Details/CalvinKleinHome-Volcanic-VLC01/147663",
-
-
+    # "https://www.rugs-direct.com/Details/CalvinKleinHome-Volcanic-VLC01/147663",
 ]
 
 
@@ -29,13 +25,6 @@ def scrap(url):
         print(f"{csv_file} does not exist or is empty. Creating a new DataFrame.")
         existing_df = pd.DataFrame()
 
-    # # Check if the CSV file already exists
-    # if os.path.isfile(csv_file):
-    #     # If the file exists, read the existing data into a DataFrame
-    #     existing_df = pd.read_csv(csv_file)
-    # else:
-    #     # If the file does not exist, create an empty DataFrame
-    #     existing_df = pd.DataFrame()
     # Patterns for extracting data
     pattern = re.compile(
         r'(\d+% Off)\$(\d{1,3}(?:,\d{3})*\.\d{2})\$(\d{1,3}(?:,\d{3})*\.\d{2})')
