@@ -6,8 +6,9 @@ import os
 
 
 product_urls = [
-    "https://www.rugs-direct.com/Details/CalvinKleinHome-Linear-LNR01/147638/236892",
-    "https://www.rugs-direct.com/Details/CalvinKleinHome-Volcanic-VLC01/147663",
+    # "https://www.rugs-direct.com/Details/CalvinKleinHome-Linear-LNR01/147638/236892",
+    # "https://www.rugs-direct.com/Details/CalvinKleinHome-Volcanic-VLC01/147663",
+    "https://www.rugs-direct.com/Details/AmerRugs-Fairmont-FAI2/139167"
 ]
 
 
@@ -78,10 +79,14 @@ def scrap(url, product_variant_divs_count):
     magic_zoom_links = product_image_div.find_all('a', class_='MagicZoom')
     image_urls = [link['href'] for link in magic_zoom_links]
 
+    if (len(image_urls) <= 1):
+        variant_image = image_urls[0]
+    else:
+        variant_image = image_urls[1]
+
     # # Extracting variant information
 
     if product_variant_divs_count == 0:
-        print(len(image_urls))
         count = 0
         if count < len(image_urls):
             url = image_urls[count]
@@ -118,7 +123,7 @@ def scrap(url, product_variant_divs_count):
             'Variant Compare At Price': product_sale_price,
             'Variant Price': product_original_price,
             'Image Src': url,
-            'Variant Image': image_urls[1],
+            'Variant Image': variant_image,
             'Variant Inventory Qty': 1,
         }
         product_info.update(features_dict)
@@ -131,7 +136,6 @@ def scrap(url, product_variant_divs_count):
 
         while count != len(image_urls):
             url = image_urls[count]
-            print(count, len(image_urls))
 
             product_info = {
                 'Title': product_name,
@@ -193,7 +197,7 @@ def scrap(url, product_variant_divs_count):
                 'Variant Compare At Price': sale_price,
                 'Variant Price': original_price,
                 'Image Src': url,
-                'Variant Image': image_urls[1],
+                'Variant Image': variant_image,
                 'Variant Inventory Qty': 1,
             }
             product_info.update(features_dict)
