@@ -29,6 +29,7 @@ def scrap(url):
     product_data_divs = soup.find('div', class_='right-panel')
     product_name = product_data_divs.find(
         'h1', class_='pdp-title').get_text(strip=True)
+    print(product_name)
     product_vendor = product_data_divs.find(
         'a', class_='rd-primary-link').get_text(strip=True)
     try:
@@ -94,6 +95,11 @@ def scrap(url):
         except AttributeError:
             sale_price = original_price = None
 
+        if len(image_urls) == 1:
+            variant_image = image_urls[0]
+        else:
+            variant_image = image_urls[1]
+
         product_info = {
             'Title': product_name,
             'Body (HTML)': product_description,
@@ -105,7 +111,7 @@ def scrap(url):
             'Variant Compare At Price': sale_price,
             'Variant Price': original_price,
             'Image Src': url,
-            'Variant Image': image_urls[1],
+            'Variant Image': variant_image,
             'Variant Inventory Qty': 1,
         }
         product_info.update(features_dict)
@@ -146,11 +152,10 @@ def scrap(url):
     print("CSV file added successfully")
 
 
-main_url = 'https://www.rugs-direct.com/Details/AmerRugs-Legacy-Barton/145273'
+main_url = 'https://www.rugs-direct.com/Details/CalvinKleinHome-Volcanic-VLC01/147663'
 response = requests.get(main_url)
 html_content = response.text
 soup = BeautifulSoup(html_content, features="html.parser")
-
 product_data_divs = soup.find('div', class_='right-panel')
 
 
@@ -171,5 +176,3 @@ if product_color_variants == []:
 else:
     for i in range(len(href_list)):
         scrap(href_list[i])
-
-

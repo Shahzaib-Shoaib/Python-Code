@@ -5,39 +5,23 @@ import pandas as pd
 import os
 
 product_urls = [
-    "https://www.rugs-direct.com/Details/AmerRugs-Legacy-Barton/145273",
-    "https://www.rugs-direct.com/Details/AmerRugs-Blend-Warwick/125203",
-    "https://www.rugs-direct.com/Details/AmerRugs-Berlin-Drayton/145259",
-    "https://www.rugs-direct.com/Details/AmerRugs-Vista-Duncan/145286/233435",
-    "https://www.rugs-direct.com/Details/AmerRugs-Prairie-Camil/139180",
-    "https://www.rugs-direct.com/Details/AmerRugs-Prairie-Shay/139181",
-    "https://www.rugs-direct.com/Details/AmerRugs-Boscage-Ilford/142539/229438",
-    "https://www.rugs-direct.com/Details/AmerRugs-Arizona-Cameron/113192/180841",
-    "https://www.rugs-direct.com/Details/AmerRugs-Raffia-Rafaele/125300/201652",
-    "https://www.rugs-direct.com/Details/AmerRugs-Abstract-Hammond/142573/229524",
-    "https://www.rugs-direct.com/Details/AmerRugs-Blend-BLN15/125202",
-    "https://www.rugs-direct.com/Details/AmerRugs-Hermitage-Alyanna/150077",
-    "https://www.rugs-direct.com/Details/AmerRugs-Dune-Estra/150076",
-    "https://www.rugs-direct.com/Details/AmerRugs-Dune-Cresa/150075",
-    "https://www.rugs-direct.com/Details/AmerRugs-Berlin-Lanmore/145260",
-    "https://www.rugs-direct.com/Details/AmerRugs-Alexandria-Aletha/133549/214463",
-    "https://www.rugs-direct.com/Details/AmerRugs-Dune-Alliya/150074",
-    "https://www.rugs-direct.com/Details/AmerRugs-Vista-Raton/145287/233438",
-    "https://www.rugs-direct.com/Details/AmerRugs-Empress-Kingsley/130902",
-    "https://www.rugs-direct.com/Details/AmerRugs-Eternal-ETE22/136135"
-]
+
+
+    'https://www.rugs-direct.com/Details/CalvinKleinHome-Volcanic-VLC01/147663']
 
 
 def scrap(url):
     # Define the CSV file name
     csv_file = 'product_details.csv'
 
-    # Check if the CSV file already exists
-    if os.path.isfile(csv_file):
-        # If the file exists, read the existing data into a DataFrame
-        existing_df = pd.read_csv(csv_file)
+    if os.path.exists(csv_file) and os.path.getsize(csv_file) > 0:
+        try:
+            existing_df = pd.read_csv(csv_file)
+        except pd.errors.EmptyDataError:
+            print(f"{csv_file} is empty. Creating a new DataFrame.")
+            existing_df = pd.DataFrame()
     else:
-        # If the file does not exist, create an empty DataFrame
+        print(f"{csv_file} does not exist or is empty. Creating a new DataFrame.")
         existing_df = pd.DataFrame()
 
     # Patterns for extracting data
@@ -186,6 +170,8 @@ def scrap(url):
 
     # Save the updated DataFrame back to the CSV file
     existing_df.to_csv(csv_file, index=False)
+    print(existing_df)
+
     print("CSV file added successfully")
 
 
